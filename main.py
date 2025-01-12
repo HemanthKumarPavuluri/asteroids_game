@@ -49,6 +49,12 @@ def main():
                 print("Game Over!!")
                 pygame.quit()
                 return
+            for shot in shots:
+                if asteroid.check_collision(shot):
+                    shot.kill()
+                    asteroid.kill()
+                
+        
         #Draws player triangle to screen
         for drawable_object in drawable:
             drawable_object.draw(screen)
