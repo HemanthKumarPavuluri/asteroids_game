@@ -34,9 +34,16 @@ def main():
                 return
         # Fill the screen with a solid "black" color (RGB: 0, 0, 0)
         screen.fill((0, 0, 0))
+
         # handles movement
         for updatable_obj in updatable:
             updatable_obj.update(dt) 
+
+        for asteroid in asteroids:
+            if player.check_collision(asteroid):
+                print("Game Over!!")
+                pygame.quit()
+                return
         #Draws player triangle to screen
         for drawable_object in drawable:
             drawable_object.draw(screen)
