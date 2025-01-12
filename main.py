@@ -23,7 +23,7 @@ def main():
                 return
         # Fill the screen with a solid "black" color (RGB: 0, 0, 0)
         screen.fill((0, 0, 0))
-        # handles rotation
+        # handles movement
         player.update(dt) 
         #Draws player triangle to screen
         player.draw(screen)
