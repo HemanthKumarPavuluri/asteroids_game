@@ -13,8 +13,13 @@ def main():
     print("Starting asteroids!")
     clock = pygame.time.Clock()
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     dt = 0
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+
 
     while True:
         for event in pygame.event.get():
@@ -24,9 +29,11 @@ def main():
         # Fill the screen with a solid "black" color (RGB: 0, 0, 0)
         screen.fill((0, 0, 0))
         # handles movement
-        player.update(dt) 
+        for updatable_obj in updatable:
+            updatable_obj.update(dt) 
         #Draws player triangle to screen
-        player.draw(screen)
+        for drawable_object in drawable:
+            drawable_object.draw(screen)
         # Refresh the display to show the updates
         pygame.display.flip()
 
